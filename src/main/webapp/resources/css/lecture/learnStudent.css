@@ -1,0 +1,29 @@
+@charset "UTF-8";
+
+.sidebar-wrapper {
+	background-color:black;
+	overflow-x: hidden;
+	overflow-y: scroll;
+}
+
+.sidebar-nav {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.sidebar-nav li {
+	text-indent: 1.5em;
+	line-height: 2.8em;
+}
+
+.sidebar-nav li a {
+	display: block;
+	text-decoration: none;
+	color: #999;
+}
+
+.sidebar-nav li a:hover {
+	color: #fff;
+	background: rgba(255, 255, 255, 0.2);
+}

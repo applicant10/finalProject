@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 네임스페이스는 MemberMapper.xml과 맵핑되는 인터페이스 package를 포함해서 명시함. 불일치시 오류 발생 -->        
+<mapper namespace="kr.spring.board.dao.BoardMapper">
+	<select id="list" parameterType="map" resultType="boardCommand">
+		SELECT
+         *
+        FROM (SELECT 
+            a.*,
+            rownum rnum
+           FROM(SELECT 
+                  b.b_num,
+                 <![CDATA[
+                  REPLACE(REPLACE(b.b_title,'<','&lt;'),'>','&gt;') b_title,
+                  ]]>
+                  b.b_hit, 
+                  b.b_date, 
+                  b.b_nick,
+                  b.m_id, 
+                  r.reply_cnt
+                 FROM board b LEFT JOIN (SELECT b_num, count(*) reply_cnt
+                                       FROM board_reply
+                                       GROUP BY b_num)r
+                 ON b.b_num = r.b_num
+                 <where>
+                      <if test="keyword != '' and keyfield == 'title'">
+                         b.b_title like '%' || #{keyword} || '%'
+                      </if>
+                      <if test="keyword != '' and keyfield == 'content'">
+                           b.b_content like '%' || #{keyword} || '%'s
+                      </if>
+                      <if test="keyword != '' and keyfield == 'id'">
+                         b.m_id like '%' || #{keyword} || '%'
+                      </if>
+                 </where>
+                 ORDER BY b.b_num DESC)a)
+      <![CDATA[
+      WHERE rnum >= #{start} AND rnum <= #{end}
+      ]]>
+	</select>
+	
+	<select id="getRowCount" parameterType="map" resultType="integer">
+		SELECT 
+		  count(*) 
+	    FROM board
+	    <where>
+			<if test="keyword != '' and keyfield == 'b_title'">
+				b_title like '%' || #{keyword} || '%'
+			</if>
+			<if test="keyword != '' and keyfield == 'm_id'">
+				b_id like '%' || #{keyword} || '%'
+			</if>
+			<if test="keyword != '' and keyfield == 'b_content'">
+				b_content like '%' || #{keyword} || '%'
+			</if>
+		</where>   	
+	</select>
+	
+	<!-- 댓글 목록 -->
+	<select id="listReply" parameterType="map" resultType="boardReplyCommand">
+		SELECT 
+		  br_num, br_content, br_date, b_num, m_id 
+		FROM (SELECT 
+		 	    a.*, rownum rnum 
+		FROM (SELECT 
+				* 
+		FROM board_reply 
+		WHERE b_num = #{b_num} 
+		ORDER BY br_num DESC)a)
+		<![CDATA[
+		WHERE rnum >= #{start} AND rnum <= #{end}
+		]]>
+	</select>
+	
+</mapper>
+
+
+
+
+
+
+

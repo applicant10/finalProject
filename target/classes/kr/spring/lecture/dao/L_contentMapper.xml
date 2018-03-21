@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 네임스페이스는 MemberMapper.xml과 맵핑되는 인터페이스명을 package를 포함해서 명시함. 불일치시 오류 발생 -->
+<mapper namespace="kr.spring.lecture.dao.L_contentMapper">
+	<!-- /l_content & lc_mem 테이블 조인해서 해당 유저의 컨텐츠별 수강 정보 셀렉션(글 내용 뺌) -->
+	<select id="selectLcJoinLcmUseLm" parameterType="hashmap" resultType="l_contentCommand">
+		select
+			lc.lc_num,
+			lc.lc_title,
+			lc.lc_date,
+			lc.lc_redate,
+			lc.lc_hit,
+			lc.l_num,
+			lc.lc_sequence,
+    		lcm.lc_m_num,
+    		lcm.l_m_num,
+    		lcm.comdate
+		from
+			(select * from l_content where l_num=#{l_num}) lc
+		left join
+			(select * from lc_mem where l_m_num=#{l_m_num}) lcm
+		on
+			lc.lc_num=lcm.lc_num
+		ORDER BY lc.lc_sequence ASC
+	</select>
+	<!-- 위 쿼리에 글내용 추가해서 셀렉션! -->
+	<select id="selectLcJoinLcmUseLmCon" parameterType="hashmap" resultType="l_contentCommand">
+		select
+			lc.lc_num,
+			lc.lc_title,
+			lc.lc_content,
+			lc.lc_date,
+			lc.lc_redate,
+			lc.lc_hit,
+			lc.l_num,
+			lc.lc_sequence,
+    		lcm.lc_m_num,
+    		lcm.l_m_num,
+    		lcm.comdate
+		from
+			(select * from l_content where l_num=#{l_num}) lc
+		left join
+			(select * from lc_mem where l_m_num=#{l_m_num}) lcm
+		on
+			lc.lc_num=lcm.lc_num
+		ORDER BY lc.lc_sequence ASC
+	</select>
+	<!-- 위에 쿼리들에서 한 개의 결과만 뽑아오기 -->
+	<select id="selectLcJoinLcmOne" parameterType="hashmap" resultType="l_contentCommand">
+		select
+			lc.lc_num,
+			lc.lc_title,
+			lc.lc_content,
+			lc.lc_date,
+			lc.lc_redate,
+			lc.lc_hit,
+			lc.l_num,
+    		lcm.lc_m_num,
+    		lcm.l_m_num,
+    		lcm.comdate
+		from
+			(select * from l_content where l_num=#{l_num}) lc
+		left join
+			(select * from lc_mem where l_m_num=#{l_m_num}) lcm
+		on
+			lc.lc_num=lcm.lc_num
+		WHERE
+			lc.lc_num=#{lc_num}
+	</select>
+	<!-- 강의 순서 바꾸기 -->
+	<update id="lcSequence" parameterType="hashmap">
+		UPDATE
+			l_content
+		SET 
+			lc_sequence=#{lc_sequence}
+		WHERE
+			lc_num=#{lc_num}
+	</update>
+
+	<!-- <select id="checkLectureUseId" parameterType="hashmap" resultType="integer"> 
+		SELECT
+			count(*) 
+		FROM
+			le_num
+		WHERE
+			m_id = #{m_id} AND l_num = #{l_num}
+		</select> 
+		<select id="selectLM" parameterType="hashmap" resultType="Le_numCommand"> 
+		SELECT 
+			*
+		FROM
+			le_num 
+		WHERE
+			m_id = #{m_id} AND l_num = #{l_num}
+		</select> 
+		<select id="selectFinLMList" parameterType="hashmap" resultType="Le_numCommand"> 
+		SELECT 
+			* 
+		FROM 
+			le_num m LEFT JOIN lecture l ON m.l_num=l.l_num 
+		WHERE 
+			m.m_id = #{m_id} AND m.l_num = #{l_num} AND m.eDate IS NOT NULL
+		</select>
+		<select id="selectNoFinLMList" parameterType="hashmap" resultType="Le_numCommand"> 
+		SELECT 
+			* 
+		FROM 
+			le_num m LEFT JOIN lecture l ON m.l_num=l.l_num 
+		WHERE 
+			m.m_id = #{m_id} AND m.l_num = #{l_num} AND m.eDate IS NULL
+		</select> -->
+</mapper>
+
+
+
+
+
+

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 네임스페이스는 MemberMapper.xml과 맵핑되는 인터페이스명을 package를 포함해서 명시함. 불일치시 오류 발생 -->
+<mapper namespace="kr.spring.lecture.dao.Lc_replyMapper">
+	<select id="list" parameterType="map" resultType="lc_replyCommand">
+		SELECT
+			*
+		FROM (SELECT 
+				a.*,
+				rownum rnum
+			 FROM(SELECT
+			 		*
+			 	  FROM lc_reply
+			 	  WHERE lc_num = #{lc_num}
+			 	  ORDER BY lcr_num DESC)a)
+		<![CDATA[
+		WHERE rnum >= #{start} AND rnum <=#{end}
+		]]>
+	</select>
+	<select id="getRowCountReply" parameterType="map" resultType="integer">
+		SELECT
+			count(*)
+		FROM
+			lc_reply
+		WHERE
+			lc_num=#{lc_num}
+	</select>
+	<select id="insertReply" parameterType="lc_replyCommand">
+		INSERT INTO
+			lc_reply(
+				lcr_num,
+				m_id,
+				lc_num,
+				lcr_content,
+				lcr_date,
+				lcr_ip
+			)
+		VALUES(
+			lcr_num_seq.nextval,
+			#{m_id},
+			#{lc_num},
+			#{lcr_content},
+			sysdate,
+			#{lcr_ip}
+		)
+	</select>
+	<select id="updateReply" parameterType="lc_replyCommand">
+		UPDATE
+			lc_reply
+		SET
+			lcr_content=#{lcr_content},
+			lcr_ip=#{lcr_ip}
+		WHERE
+			lcr_num=#{lcr_num}
+	</select>
+	<select id="deleteReply" parameterType="integer">
+		DELETE FROM
+			lc_reply
+		WHERE
+			lcr_num = #{lcr_num}
+	</select>
+</mapper>
+
+
+
+
+
+

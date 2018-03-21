@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+	<definition name="registerForm" extends="main">
+   	  <put-attribute name="header" value="/WEB-INF/views/template/header.jsp"/>
+      <put-attribute name="body" value="/WEB-INF/views/user/registerForm.jsp"/>
+      <put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>
+   </definition>
+   <definition name="loginForm" extends="main">
+   	  <put-attribute name="header" value="/WEB-INF/views/template/header.jsp"/>
+      <put-attribute name="body" value="/WEB-INF/views/user/loginForm.jsp"/>
+      <put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>
+   </definition>
+   <definition name="myPageMain" extends="main">
+   	  <put-attribute name="header" value="/WEB-INF/views/template/header.jsp"/>
+      <put-attribute name="body" value="/WEB-INF/views/user/myPageMain.jsp"/>
+      <put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>
+   </definition>
+   <definition name="myInfo" extends="main">
+   	  <put-attribute name="header" value="/WEB-INF/views/template/header.jsp"/>
+      <put-attribute name="body" value="/WEB-INF/views/user/myInfo.jsp"/>
+      <put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>
+   </definition>
+   <definition name="memberUpdate" extends="main">
+   	  <put-attribute name="header" value="/WEB-INF/views/template/header.jsp"/>
+      <put-attribute name="body" value="/WEB-INF/views/user/memberUpdate.jsp"/>
+      <put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>
+   </definition>
+   <definition name="deleteAsk" extends="main">
+   	  <put-attribute name="header" value="/WEB-INF/views/template/header.jsp"/>
+      <put-attribute name="body" value="/WEB-INF/views/user/deleteAsk.jsp"/>
+      <put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>
+   </definition>
+   <definition name="registerChoice" extends="main">
+   	  <put-attribute name="header" value="/WEB-INF/views/template/header.jsp"/>
+      <put-attribute name="body" value="/WEB-INF/views/user/registerChoice.jsp"/>
+      <put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>
+   </definition>
+   <definition name="address" extends="main">
+   	  <put-attribute name="header" value="/WEB-INF/views/template/header.jsp"/>
+      <put-attribute name="body" value="/WEB-INF/views/address.jsp"/>
+      <put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>
+   </definition>
+   <definition name="findIdForm" extends="main">
+   	  <put-attribute name="header" value="/WEB-INF/views/template/header.jsp"/>
+      <put-attribute name="body" value="/WEB-INF/views/user/find/findIdForm.jsp"/>
+      <put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>
+   </definition>
+   <definition name="findPasswdForm" extends="main">
+   	  <put-attribute name="header" value="/WEB-INF/views/template/header.jsp"/>
+      <put-attribute name="body" value="/WEB-INF/views/user/find/findPasswdForm.jsp"/>
+      <put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>
+   </definition>
+   <definition name="idNotFound" extends="main">
+   	  <put-attribute name="header" value="/WEB-INF/views/template/header.jsp"/>
+      <put-attribute name="body" value="/WEB-INF/views/user/find/idNotFound.jsp"/>
+      <put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>
+   </definition>
+   <definition name="idFound" extends="main">
+   	  <put-attribute name="header" value="/WEB-INF/views/template/header.jsp"/>
+      <put-attribute name="body" value="/WEB-INF/views/user/find/idFound.jsp"/>
+      <put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>
+   </definition>
+   <definition name="passwdNotFound" extends="main">
+   	  <put-attribute name="header" value="/WEB-INF/views/template/header.jsp"/>
+      <put-attribute name="body" value="/WEB-INF/views/user/find/passwdNotFound.jsp"/>
+      <put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>
+   </definition>
+   <definition name="passFound" extends="main">
+   	  <put-attribute name="header" value="/WEB-INF/views/template/header.jsp"/>
+      <put-attribute name="body" value="/WEB-INF/views/user/find/findPasswd.jsp"/>
+      <put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>
+   </definition>
+   <definition name="AccessDenied" extends="main">
+   	  <put-attribute name="header" value="/WEB-INF/views/template/header.jsp"/>
+      <put-attribute name="body" value="/WEB-INF/views/user/AccessDenied.jsp"/>
+      <put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>
+   </definition>
+</tiles-definitions>

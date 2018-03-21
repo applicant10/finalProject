@@ -1,0 +1,12 @@
+$(document).ready(function(){
+	$('#resumeTypeChoice').on('click',function(){
+		$('#resumeType').dialog({
+			display:'',
+			width:500,
+			height:500,
+			modal:true,
+			resizable:false,
+			open:true
+		});
+	});
+});

@@ -1,0 +1,37 @@
+#r_loc{
+	width:200px;
+	height:30px;
+	margin-top:4px;
+}
+#m_id{
+	width:240px;
+	height:30px;
+}
+input[type=submit]{
+	margin:3px;
+}
+.grayColor{
+	color:gray;
+}
+h2{
+	border-bottom:1px solid #C0C0C0;
+	width:75%;
+}
+@media(max-width:600px){
+	#m_id{
+		width:200px;
+		height:30px;
+	}	       
+}
+#nextResumeShow{
+	background:gray;
+	color:white;
+	padding-top:1%;
+	width:100%;
+}        
+#nullException{
+	margin-top:30px;
+}
+#boot{
+	margin-bottom:20px;
+}

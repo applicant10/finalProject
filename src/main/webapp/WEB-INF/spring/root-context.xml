@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+						http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+	                    http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+	                    http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+						">
+	<bean id="mailSender" class = "org.springframework.mail.javamail.JavaMailSenderImpl">
+      <property name="host" value="smtp.gmail.com" />
+      <property name="port" value="587" />
+      <property name="username" value="아이디" />
+      <property name="password" value="비밀번호" />
+      
+      <property name="javaMailProperties">
+         <props>
+               <prop key="mail.transport.protocol">smtp</prop>
+               <prop key="mail.smtp.auth">true</prop>
+               <prop key="mail.smtp.starttls.enable">true</prop>
+               <prop key="mail.debug">true</prop>
+         </props>
+      </property>
+    </bean>
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	
+	<!-- 빈 자동 스캔, servlet-context.xml에서
+	    Controller를 자동 스캔 설정해서 아래 설정에서는
+	    Controller 자동 스캔 제외 -->
+	<context:component-scan base-package="kr.spring">
+		<context:exclude-filter type="annotation" 
+		expression="org.springframework.stereotype.Controller"/>
+	</context:component-scan>
+	
+	<!-- JDBC 기반 트랜잭션 관리자 설정 -->
+	<bean id="transactionManager"
+	  class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
+	  p:dataSource-ref="dataSource"/>
+	
+	<!-- 어노테이션 사용시 -->
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+	
+	<!-- db 설정 파일 -->
+	<context:property-placeholder location="classpath:config/jdbc.properties"/>
+	
+	<!-- 커넥션 풀을 이용한 DataSource 설정 -->
+	<bean id="dataSource" 
+	      class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="${jdbc.driverClassName}"/>
+		<property name="url" value="${jdbc.url}"/>
+		<property name="username" value="${jdbc.username}"/>
+		<property name="password" value="${jdbc.password}"/>
+		<!-- 최대 커넥션 개수 -->
+		<property name="maxActive" value="50"/>
+		<!-- 접속이 없을 경우 최대 유지 커넥션 개수 -->
+		<property name="maxIdle" value="30"/>
+		<!-- 접속이 없을 경우 최소 유지 커넥션 개수 -->
+		<property name="minIdle" value="20"/>
+		<!-- 최대 대기기간(초) : 초과시 연결 실패 오류 발생 -->
+		<property name="maxWait" value="5"/>
+	</bean>
+	
+	<!-- mybatis 설정 -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="configLocation" value="classpath:/config/mybatis-config.xml"></property>
+		<property name="typeAliasesPackage" value="kr.spring.member.domain,
+												   kr.spring.resume.domain,
+												   kr.spring.lecture.domain,
+												   kr.spring.subject.domain,
+												   kr.spring.qnaboard.domain,
+												   kr.spring.enterprise.domain,
+												   kr.spring.board.domain,
+												   kr.spring.team.domain,
+												   kr.spring.study.domain,
+												   kr.spring.record.domain"/>
+	</bean>
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="kr.spring.member.dao,
+											kr.spring.resume.dao,
+											kr.spring.lecture.dao,
+											kr.spring.subject.dao,
+											kr.spring.qnaboard.dao,
+											kr.spring.enterprise.dao,
+											kr.spring.board.dao,
+											kr.spring.team.dao,
+											kr.spring.study.dao,
+											kr.spring.record.dao"/>
+	</bean>
+	
+</beans>

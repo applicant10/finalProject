@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<!-- 네임스페이스는 MemberMapper.xml과 맵핑되는 인터페이스명을 package를 포함해서 명시함. 불일치시 오류 발생 -->
+<mapper namespace="kr.spring.record.dao.RecordMapper">
+	<insert id="insertRecord" parameterType="map">
+		INSERT INTO
+			record(
+				r_num,
+				m_nick,
+				record,
+				r_content,
+				r_date
+			)
+		VALUES(
+			record_seq.nextval,
+			#{m_nick},
+			#{record},
+			#{r_content},
+			sysdate
+		)
+		
+	</insert>
+
+	<select id="list" parameterType="map" resultType="recordCommand">
+		SELECT
+			*
+			  FROM record WHERE m_nick = (SELECT m_nick FROM member WHERE m_nick=#{userNick})
+		           ORDER BY r_num DESC
+	</select>
+	
+	<select id="getRowCount" parameterType="map" resultType="integer">
+		SELECT
+		  count(*)
+		FROM record WHERE m_nick = (SELECT m_nick FROM member WHERE m_nick=#{userNick})
+	</select>
+</mapper>
+
+
+
+
+
+
+

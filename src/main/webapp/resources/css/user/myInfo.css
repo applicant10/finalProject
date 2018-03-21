@@ -1,0 +1,43 @@
+ul li{
+	list-style:none;
+}
+li{
+	margin:5px;        
+}
+h3{
+	border-bottom:1px solid #C0C0C0;
+}
+label{      
+	width:140px;
+	font-size:14px;
+}                  
+.myInformation{
+	color:gray;
+}
+.info{
+	padding:10px;    
+}
+.btn{
+	margin:12px;
+}      
+#menu{      
+	height:240px;
+	padding:5px;
+}
+.btn-size{
+	width:130px;                
+	padding:10px 30px 10px 30px;       
+	margin-top:25px;
+}               
+#wrapImg{
+	padding-top:14px;
+}              
+#imgChart{
+	width:135px;
+	height:140px;
+}
+#wrapHalf{
+	border:1px solid #C0C0C0;
+	margin-bottom:10px;  
+	border-radius:10px;
+}

@@ -1,0 +1,44 @@
+h3{
+	border-bottom:1px solid #C0C0C0;
+	width:60%;
+}
+#wrapAll{
+	padding:10px;
+}
+#aBtn1,#aBtn2{
+	margin:3px;
+	width:200px;
+}         
+ul li{
+	list-style:none;
+	padding:5px;
+}
+label {
+	width:100px;
+}       
+#btns{
+	border:1px solid #C0C0C0;
+	border-radius:10px;
+	margin:10px;
+}          
+@media(max-width:992px){
+	.help{
+		display:none;
+	}
+	#aBtn1,#aBtn2{
+		width:400px;
+		margin:10px;
+	}
+	#btns{
+		border:none;
+	}
+}
+@media(max-width:770px){
+	#aBtn1,#aBtn2{
+		width:200px;
+		margin:10px;
+	}
+	#btns{
+		border:none;
+	}
+}          

@@ -1,0 +1,96 @@
+/*
+이력서 전용 css
+*/
+#selfIntro{
+	border:1px solid #C0C0C0;
+	border-radius:10px;
+	padding:10px;
+}         
+#introName{
+	border-bottom:1px solid #C0C0C0;
+	width:200px;
+}
+#imgSize{
+	margin-left:45px;
+	width:23px;
+	height:23px;         
+}
+div.resumeHeader ul li{            
+	list-style:none;
+	display:inline;
+}
+div#showResumeDetail{
+	margin:0 100px 0 0;         
+}
+td{
+	padding:17px;
+}
+div.resumeHeader{
+	text-align:center;  
+}
+td.resumeDate{
+	text-align:center;
+	padding:30px;
+}
+td.resumeContent{
+	width:1400px;
+	height:400px;
+}
+td.resumeFoot{
+	text-align:center;
+	margin:30px;
+	padding:30px;
+}
+span.reDetail{
+	font-size:1em;
+	margin:auto;
+}
+
+#r_intro{
+	resize:none;
+}
+.r_intro1 b{
+	margin-left:50%;
+}  
+.r_intro2{           
+}
+textarea#r_intro{
+	border:solid 1px #34C6BE;  
+}
+
+@media(min-width:1200px){              
+	a.col-lg-11{                
+		width:85%;                       
+	}
+}
+@media(max-width:1300px){
+	a.col-lg-11{                
+		width:86%;                       
+	}
+}
+@media(man-width:900px){
+	a.col-md-10{                
+		width:90%;                       
+	}
+	#introName{
+		width:300px;
+	}
+	td.resumeContent{
+		width:500px;
+	}
+	#selfIntro{
+		width:200px;
+	}
+	
+}
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,68 @@
+.gray{
+	color:gray;
+	padding:10px;
+}
+td{
+	padding:10px;
+}
+tr{
+	border-bottom:1px solid #d3d3d3;
+}
+.tr{
+	background:#efefef;
+}
+.num{
+	width:50px;
+	text-align:center;
+}
+.mId{
+	width:230px;
+	text-align:center;
+}
+.mNick{
+	width:120px;
+	text-align:center;
+}
+.mAccess{
+	width:100px;
+	text-align:center;
+}
+.mBtn{
+	width:80px;
+	text-align:center;
+}
+#member,#enter{
+	padding-bottom:15px;
+}
+#enter{
+	display:none;
+}
+#memberBtn{
+	background:#efefef;
+}
+#enterpriseBtn{
+	background:#ffffff;
+}
+#memberBtn,#enterpriseBtn{
+	cursor:pointer;               
+	text-align:center;          
+	padding-top:11px;
+	width:100px;
+	height:40px;
+	border-top:1px solid #C0C0C0;
+	border-left:1px solid #C0C0C0;
+	border-right:1px solid #C0C0C0;
+	border-radius:10px 10px 0 0;
+}
+.accessMember{
+	width:80px;
+}
+.null{
+	padding:50px;
+}
+
+
+
+
+
+

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 네임스페이스는 MemberMapper.xml과 맵핑되는 인터페이스명을 package를 포함해서 명시함. 불일치시 오류 발생 -->
+<mapper namespace="kr.spring.lecture.dao.LectureReplyMapper">
+	
+	<select id="myReply" parameterType="map" resultType="lectureReplyCommand">
+		SELECT
+			*
+		FROM
+			lecture_reply
+		WHERE
+			m_id=#{m_id} AND l_num=#{l_num}
+	</select>
+	
+	<select id="alreadyDone" parameterType="map" resultType="integer">
+		SELECT
+			count(*)
+		FROM
+			lecture_reply
+		WHERE
+			m_id=#{m_id} AND l_num=#{l_num}
+	</select>
+	
+	<update id="averagePoint" parameterType="integer">
+		UPDATE
+			lecture
+		SET
+			l_point=(
+						SELECT
+							avg(lr_point)
+						FROM
+							lecture_reply
+						WHERE
+							l_num=#{l_num} AND lr_point <![CDATA[ > ]]> 0
+					)
+		WHERE
+			l_num=#{l_num}
+	</update>
+
+	<select id="list" parameterType="map" resultType="lectureReplyCommand">
+		SELECT
+			*
+		FROM (SELECT 
+				a.*,
+				rownum rnum
+			 FROM(SELECT
+			 		*
+			 	  FROM lecture_reply
+			 	  WHERE l_num = #{l_num}
+			 	  ORDER BY lr_num DESC)a)
+		<![CDATA[
+		WHERE rnum >= #{start} AND rnum <= #{end}
+		]]>
+	</select>
+	<select id="getRowCountReply" parameterType="map" resultType="integer">
+		SELECT
+			count(*)
+		FROM
+			lecture_reply
+		WHERE
+			l_num=#{l_num}
+	</select>
+	<select id="insertReply" parameterType="lectureReplyCommand">
+		INSERT INTO
+			lecture_reply(
+				lr_num,
+				m_id,
+				l_num,
+				lr_content,
+				lr_date,
+				lr_ip,
+				lr_point
+			)
+		VALUES(
+			lr_num_seq.nextval,
+			#{m_id},
+			#{l_num},
+			#{lr_content},
+			sysdate,
+			#{lr_ip},
+			#{lr_point}
+		)
+	</select>
+	<select id="updateReply" parameterType="lectureReplyCommand">
+		UPDATE
+			lecture_reply
+		SET
+			lr_content=#{lr_content},
+			lr_ip=#{lr_ip},
+			lr_point=#{lr_point},
+			lr_date=sysdate
+		WHERE
+			m_id=#{m_id} AND l_num=#{l_num}
+	</select>
+	
+	<select id="deleteReply" parameterType="integer">
+		DELETE FROM
+			lecture_reply
+		WHERE
+			lr_num = #{lr_num}
+	</select>
+	
+	<select id="lecturePoint" parameterType="integer" resultType="lecturePointCommand">
+		select
+			nvl(count(decode(lr_point,1,1)),0) point1,
+    		nvl(count(decode(lr_point,2,1)),0) point2,
+    		nvl(count(decode(lr_point,3,1)),0) point3,
+    		nvl(count(decode(lr_point,4,1)),0) point4,
+    		nvl(count(decode(lr_point,5,1)),0) point5
+		from
+			lecture_reply
+		where
+			l_num=#{l_num}
+	</select>
+	
+</mapper>
+
+
+
+
+
+

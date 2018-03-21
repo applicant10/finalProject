@@ -1,0 +1,110 @@
+li{
+	list-style:none;
+	display:inline;
+}
+.sub{
+	color:gray;
+	padding-bottom:15px;                
+}            
+
+input[type=text],
+input[type=email]{
+	border:1px solid #bcbcbc;
+	border-radius:5%;
+	width:260px;
+	height:28px;
+	margin-bottom:5px;
+}
+#searchId{
+	margin:10px;
+	height:100px;
+}                           
+#resultId{             
+	font-size:1.3em;
+	position:relative;
+	display:inline-block;
+	vertical-align:middle;
+	width:80%;
+	height:100px;                                  
+	margin-top:30px;    
+	text-align:center;             
+}         
+label{            
+	width:150px;
+}
+@media(max-width:992px){
+	#m_nick,#md_name{
+		width:340px;
+	}
+	#first{
+		width:100%;
+	}
+	#outer{
+		width:450px;
+	}
+	#searchId{                        
+		width:250px;
+		height:100px;
+	}
+}
+
+/*----------------------------------------*/
+label.pas{
+	width:250px;	
+}
+.passSearch{
+	margin:15px;
+}
+
+#bod{
+	padding:8px;
+}
+span.alert{
+	color:red;
+}          
+#resultPass{
+	margin:20px;	
+}
+#resultPass2{
+	margin:20px;	
+}
+
+#resultPassCont{
+	font-size:1.3em;
+	position:relative;
+	display:inline-block;
+	vertical-align:middle;
+	width:100%;
+	height:80px;                                  
+	margin-top:30px;    
+	text-align:center;
+}
+
+@media(max-width:992px){
+	
+	input[type=text],
+	input[type=email]{
+		width:340px;
+	}
+	label.pas{
+		width:1000px;
+	}
+	span.alert{
+		width:100%;
+	}
+	
+}
+
+          
+             
+                    
+
+
+
+
+
+
+
+
+
+

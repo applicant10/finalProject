@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 네임스페이스는 MemberMapper.xml과 맵핑되는 인터페이스명을 package를 포함해서 명시함. 불일치시 오류 발생 -->
+<mapper namespace="kr.spring.lecture.dao.Lc_memMapper">
+
+	<insert id="insertLcmem" parameterType="hashmap">
+		INSERT INTO
+			lc_mem (lc_m_num,lc_num,l_m_num)
+		VALUES
+			(lc_mem_seq.nextval,#{lc_num},#{l_m_num})
+	</insert>
+	<select id="selectLcmem_use_lcNum_lmNum" parameterType="lc_memCommand" resultType="int">
+		SELECT
+			count(*)
+		FROM
+			lc_mem
+		WHERE
+			l_m_num = #{l_m_num} AND lc_num = #{lc_num}
+	</select>
+
+	<!-- 출력용 컬럼들까지 조인(date,redate,title)해서 셀랙션하는 learnInfo용 SELECT -->
+	<select id="selectLCMuseLn" parameterType="integer" resultType="lc_memCommand">
+		SELECT
+			c.*,
+			p.lc_date,
+			p.lc_redate,
+			p.lc_title
+		FROM
+			lc_mem c LEFT JOIN l_content p 
+			ON c.lc_num = p.lc_num
+		WHERE
+			l_m_num = #{l_m_num} ORDER BY p.lc_sequence
+	</select>
+	<!-- 수강번호를 사용한 셀렉션(완료한 강의 수 구하기) -->
+	<select id="selectCommLCMuseLn" parameterType="integer" resultType="integer">
+		SELECT
+			count(*)
+		FROM
+			lc_mem
+		WHERE
+			l_m_num = #{l_m_num} AND comdate IS NOT NULL
+	</select>
+	<!-- lc_num(강의기본키), l_m_num(강의_회원 기본키)를 이용해서 셀랙션한 row에 comdate update -->
+	<update id="completeLearnContent" parameterType="hashmap">
+		UPDATE
+			lc_mem
+		SET
+			comdate=sysdate
+		WHERE
+			lc_num=#{lc_num} AND l_m_num=#{l_m_num}
+	</update>
+
+	<!-- <select id="checkLectureUseId" parameterType="hashmap" resultType="integer"> 
+		SELECT
+			count(*) 
+		FROM
+			le_num
+		WHERE
+			m_id = #{m_id} AND l_num = #{l_num}
+		</select> 
+		<select id="selectLM" parameterType="hashmap" resultType="Le_numCommand"> 
+		SELECT 
+			*
+		FROM
+			le_num 
+		WHERE
+			m_id = #{m_id} AND l_num = #{l_num}
+		</select> 
+		<select id="selectFinLMList" parameterType="hashmap" resultType="Le_numCommand"> 
+		SELECT 
+			* 
+		FROM 
+			le_num m LEFT JOIN lecture l ON m.l_num=l.l_num 
+		WHERE 
+			m.m_id = #{m_id} AND m.l_num = #{l_num} AND m.eDate IS NOT NULL
+		</select>
+		<select id="selectNoFinLMList" parameterType="hashmap" resultType="Le_numCommand"> 
+		SELECT 
+			* 
+		FROM 
+			le_num m LEFT JOIN lecture l ON m.l_num=l.l_num 
+		WHERE 
+			m.m_id = #{m_id} AND m.l_num = #{l_num} AND m.eDate IS NULL
+		</select> -->
+</mapper>
+
+
+
+
+
+

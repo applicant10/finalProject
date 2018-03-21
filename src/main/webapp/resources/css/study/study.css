@@ -1,0 +1,90 @@
+.myGroup
+{
+ 	margin: auto; 
+	height: auto;
+	width: 80%;
+}
+.myGroup h4
+{
+	text-align:center;
+}
+
+.establish
+{
+	margin: auto;
+	height: auto;
+	width: 60%; 
+}
+
+.establish h2
+{
+	text-align:center;
+}
+
+.studyBoard
+{
+	margin: auto; 
+	height: auto;
+	width: 100%;
+}
+
+.studyBoard h2
+{
+	text-align:center;
+}
+
+.Search
+{
+	text-align:center;
+}
+.Writer
+{
+	border-bottom: 1px solid #cecece;
+}
+.title h3
+{
+	text-align:center;
+}
+
+.apply
+{
+	margin: auto; 
+	height: auto;
+	width: 60%;
+	text-align:center;
+}
+.a_cont
+{
+	text-align:left;
+}
+.button
+{
+	text-align:center;
+}
+.appliList
+{
+	margin: auto; 
+	height: auto;
+	width: 40%;
+}
+.appliList h3
+{
+	text-align:center;
+}
+.center
+{
+	text-align:center;
+}
+.appliDetail
+{
+	border-bottom: 1px solid #cecece;
+}
+.p a_content
+{
+	border-bottom: 1px solid #cecece;
+}
+.g_name
+{
+	text-align:center;
+}
+

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<!-- 네임스페이스는 MemberMapper.xml과 맵핑되는 인터페이스명을 package를 포함해서 명시함. 불일치시 오류 발생 -->
+<mapper namespace="kr.spring.lecture.dao.Le_numMapper">
+
+	<insert id="insertLeNum" parameterType="hashmap" >
+    INSERT INTO
+    	le_num (l_m_num,l_num,m_id,sDate)
+    VALUES
+    	(le_num_seq.nextval,#{l_num},#{m_id},sysdate)
+   </insert>
+   
+   <select id="checkLectureUseId" parameterType="hashmap" resultType="integer">
+    SELECT
+    	count(*)
+    FROM
+    	le_num
+    WHERE m_id = #{m_id} AND l_num = #{l_num}
+   </select>
+   
+   <select id="selectLM" parameterType="hashmap" resultType="Le_numCommand">
+    SELECT
+    	*
+    FROM
+    	le_num
+    WHERE
+    	m_id = #{m_id} AND l_num = #{l_num}
+   </select>
+   
+   <select id="selectFinLMList" parameterType="hashmap" resultType="Le_numCommand">
+    SELECT
+    	*
+    FROM
+    	le_num m LEFT JOIN lecture l
+    ON 
+    	m.l_num=l.l_num 
+    WHERE
+    	m.m_id = #{m_id} AND m.l_num = #{l_num} AND m.eDate IS NOT NULL
+   </select>
+   
+   <select id="selectNoFinLMList" parameterType="hashmap" resultType="Le_numCommand">
+    SELECT
+    	*
+    FROM
+    	le_num m LEFT JOIN lecture l
+    ON 
+    	m.l_num=l.l_num 
+    WHERE
+    	m.m_id = #{m_id} AND m.l_num = #{l_num} AND m.eDate IS NULL
+   </select>
+   <!-- 수강했던 모든 강좌 출력 -->
+   <select id="selectLMList" parameterType="string" resultType="Le_numCommand">
+	SELECT
+		*
+	FROM
+		le_num m LEFT JOIN lecture l
+	ON 
+    	m.l_num=l.l_num 
+	WHERE
+		m.m_id = #{m_id} ORDER BY sDate DESC
+   </select>
+
+	<select id="countLcontent" parameterType="integer" resultType="integer">
+		SELECT
+			count(*)
+		FROM
+			l_content
+		WHERE
+			l_num=(
+				SELECT
+					l_num
+				FROM
+					le_num
+				WHERE
+					l_m_num=#{l_m_num}
+			)
+	</select>
+	
+	<select id="countLcmemIsComdate" parameterType="integer" resultType="integer">
+		SELECT
+			count(*)
+		FROM
+			lc_mem
+		WHERE
+			l_m_num=#{l_m_num} AND comdate IS NOT NULL
+	</select>
+   
+   <!-- 댓글 목록 -->
+   <!-- <select id="listReply" parameterType="map" resultType="lectureReplyCommand">
+      SELECT
+         re_num,
+         re_content,
+         re_date,
+         num,
+         id
+      FROM (SELECT
+              a.*,
+              rownum rnum
+            FROM (SELECT
+                    *
+                  FROM lecture_reply
+                  WHERE num = #{num}
+                  ORDER BY re_num DESC)a)
+      <![CDATA[
+      WHERE rnum >= #{start} AND rnum <= #{end}
+      ]]>
+   </select> -->
+</mapper>
+
+
+
+
+
+

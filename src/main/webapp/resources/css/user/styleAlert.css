@@ -1,0 +1,35 @@
+#btn1,#btn2{
+	margin:10px;
+}
+td{
+	text-align:center;
+	font-size:16px;
+	padding:5px;
+}            
+ 
+.gray{
+	background:gray;
+	color:white;
+}  
+h3{         
+	border-bottom:1px solid #C0C0C0;
+}       
+#noneLike{
+	padding-top:40px;
+	height:140px;                    
+}
+#followImg{              
+	width:150px;
+	height:150px;
+	object-fit:cover;
+	display:inline-block;
+	border-radius:50%;        
+	overflow:hidden;
+}
+#tip{
+	border:1px solid #C0C0C0;
+	padding:10px;
+	border-radius:10px;
+	margin-bottom:10px;
+}
+                   

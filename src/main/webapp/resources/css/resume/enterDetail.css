@@ -1,0 +1,77 @@
+#map{
+	width:891px;
+	height:300px;
+	margin:10px;
+	border:1px solid #C0C0C0;
+}
+ul li{
+	list-style:none;	
+}      
+li{
+	display:inline;
+}
+label{
+	font-size:20px;
+	font-weight:lighter;
+	background:#FFC645;
+	width:140px;
+}
+#name,#type{
+	margin-top:40px;
+	margin-left:70px;
+}        
+#wrapAddress{
+	margin:10px;
+	border:1px solid #C0C0C0;
+	width:891px;
+}
+#enAddress{    
+	margin-top:20px;
+	margin-bottom:20px;
+	margin-left:70px;
+}
+#sal{
+	margin-top:20px;
+	margin-left:10px;
+}
+#enName,#enType,#enSal{
+	border:1px solid #C0C0C0;
+	height:150px;
+	width:284px;
+	margin:10px;  
+	border-radius:2px;       
+}
+#btns{
+	margin-bottom:10px;
+}
+#wrapInfo{
+	border:1px solid #C0C0C0;
+	padding:10px;
+	margin-bottom:10px;
+	border-radius:5px;
+}          
+@media screen and (max-width:1200px){
+	#enName,#enType{
+		width:261px;
+	}
+	#enSal{
+		width:540px;
+	}
+	#wrapAddress{
+		width:540px;
+	}
+	#wrapInfo{
+		width:600px;
+	}
+	#map{
+		width:540px;
+	}
+}
+@media screen and (max-width:720px){
+	#wrapInfo{       
+		width:400px;
+	}
+	#enName,#enType,#enSal,#wrapAddress,#map{
+		width:360px;
+	}
+}

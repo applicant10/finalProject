@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<!-- 네임스페이스는 MemberMapper.xml과 맵핑되는 인터페이스명을
+package를 포함해서 명시함. 불일치시 오류 발생 -->
+<mapper namespace="kr.spring.qnaboard.dao.QnABoardMapper">
+	
+	<!-- qnaCount -->
+	<select id="getQnaListRowCount" parameterType="map" resultType="integer">
+		SELECT COUNT(*) AS CNT 
+		  FROM QNABOARD
+		<where>
+	      	<if test="keyword != '' and keyfield == 'title'">
+	      	   Q_TITLE like '%' || #{keyword} || '%'
+	      	</if>
+	      	<if test="keyword != '' and keyfield == 'id'">
+	      	   M_ID like '%' || #{keyword} || '%'
+	      	</if>
+	      	<if test="keyword != '' and keyfield == 'content'">
+	      	   Q_CONTENT like '%' || #{keyword} || '%'
+	      	</if>
+      </where>
+	</select>
+
+	<!-- qnaList -->
+	<select id="getQnAList" parameterType="map" resultType="QnABoardCommand">
+		SELECT *
+		  FROM ( 
+			SELECT 
+				ROWNUM rnum
+				,T1.* 
+			FROM (
+				SELECT  Q_NUM,
+					    Q_COL,
+					    Q_TITLE,
+					    Q_CONTENT,
+					    TO_CHAR(Q_DATE, 'YYYY-MM-DD') AS Q_DATE,
+					    Q_HIT,
+					    Q_IP,
+					    Q_NICK,
+					    Q_PRIVATE,
+					    M_ID,
+					    Q_ANSWER 
+				FROM QNABOARD
+			)T1
+		  <where>
+		      	<if test="keyword != '' and keyfield == 'title'">
+		      	   T1.Q_TITLE like '%' || #{keyword} || '%'
+		      	</if>
+		      	<if test="keyword != '' and keyfield == 'id'">
+		      	   T1.M_ID like '%' || #{keyword} || '%'
+		      	</if>
+		      	<if test="keyword != '' and keyfield == 'content'">
+		      	   T1.Q_CONTENT like '%' || #{keyword} || '%'
+		      	</if>
+	      </where>
+			ORDER BY T1.Q_NUM DESC
+		)
+		<![CDATA[
+		WHERE rnum >= #{start} AND rnum <= #{end}
+		]]>	   
+	</select>
+	
+</mapper>
+
+
+
+
+
+
+

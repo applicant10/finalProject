@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<!-- 네임스페이스는 MemberMapper.xml과 맵핑되는 인터페이스명을 package를 포함해서 명시함. 불일치시 오류 발생 -->
+<mapper namespace="kr.spring.lecture.dao.LectureMapper">
+   <select id="list" parameterType="map" resultType="lectureCommand">
+      SELECT
+        *
+      FROM (SELECT
+              a.*,
+              rownum rnum
+            FROM(SELECT
+                   l.l_num,
+                   <![CDATA[
+                   REPLACE(REPLACE(l.l_title, '<','&lt;'), '>','&gt;') l_title,
+                   ]]>
+                   l.l_hit,
+                   l.l_shortcon,
+                   l.l_point,
+                   l.l_open,
+                   l.l_pay,
+                   l.l_point,
+                   r.lecre_cnt,
+                 FROM lecture l LEFT JOIN (SELECT l_num, count(*) lecre_cnt
+                                           FROM lecture_reply
+                                           GROUP BY l_num)r
+                 ON l.l_num = r.l_num
+            <where>
+               <if test="keyword != '' and keyfield == 'title'">
+                  l.l_title like '%' || #{keyword} || '%' 
+               </if>
+               <if test="keyword != '' and keyfield == 'id'">
+                  l.m_id like '%' || #{keyword} || '%' 
+               </if>
+               <if test="keyword != '' and keyfield == 'content'">
+                  l.l_content like '%' || #{keyword} || '%' 
+               </if>
+               <if test="subject != 0">
+                  AND l.s_num like '%' || #{subject} || '%' 
+               </if>
+            </where>
+                 ORDER BY l.l_num DESC)a)
+      <![CDATA[
+      WHERE rnum >= #{start} AND rnum <= #{end}
+      ]]>
+   </select>
+
+   <select id="listOtherSearch" parameterType="map" resultType="lectureCommand">
+      SELECT
+        *
+      FROM (SELECT
+              a.*,
+              rownum rnum
+            FROM(SELECT
+                   l.l_num,
+                   <![CDATA[
+                   REPLACE(REPLACE(l.l_title, '<','&lt;'), '>','&gt;') l_title,
+                   ]]>
+                   l.l_hit,
+                   l.l_shortcon,
+                   l.l_point,
+                   l.l_open,
+                   l.l_pay,
+                   r.lecre_cnt
+                 FROM lecture l LEFT JOIN (SELECT l_num, count(*) lecre_cnt
+                                           FROM lecture_reply
+                                           GROUP BY l_num)r
+                 ON l.l_num = r.l_num
+            <where>
+            	l.l_open='open'
+               <if test="keyword != '' and keyfield == 'title'">
+                  AND l.l_title like '%' || #{keyword} || '%' 
+               </if>
+               <if test="keyword != '' and keyfield == 'id'">
+                  AND l.m_id like '%' || #{keyword} || '%' 
+               </if>
+               <if test="keyword != '' and keyfield == 'content'">
+                  AND l.l_content like '%' || #{keyword} || '%' 
+               </if>
+               <if test="subject != 0">
+                  AND l.s_num like '%' || #{subject} || '%' 
+               </if>
+            </where>
+                 ORDER BY l.l_num DESC)a)
+      <![CDATA[
+      WHERE rnum >= #{start} AND rnum <= #{end}
+      ]]>
+      
+   </select>
+   
+   <select id="getRowCount" parameterType="map" resultType="integer">
+      SELECT
+        count(*)
+      FROM lecture
+      <where> <!-- 검색에 대한 페이징 -->
+            <if test="keyword != '' and keyfield == 'title'">
+               l_title like '%' || #{keyword} || '%' 
+            </if>
+            <if test="keyword != '' and keyfield == 'id'">
+               m_id like '%' || #{keyword} || '%' 
+            </if>
+            <if test="keyword != '' and keyfield == 'content'">
+               l_content like '%' || #{keyword} || '%' 
+            </if>
+            <if test="subject != 0">
+                  AND s_num like '%' || #{subject} || '%' 
+            </if>
+     </where>
+   </select>
+
+	<select id="getRowCount_otherSearch" parameterType="map" resultType="integer">
+		SELECT
+			count(*)
+		FROM
+			lecture
+		<where> <!-- 검색에 대한 페이징 -->
+			l_open='open'
+			<if test="keyword != '' and keyfield == 'title'">
+				AND l_title like '%' || #{keyword} || '%'
+			</if>
+			<if test="keyword != '' and keyfield == 'id'">
+				AND m_id like '%' || #{keyword} || '%'
+			</if>
+			<if test="keyword != '' and keyfield == 'content'">
+				AND l_content like '%' || #{keyword} || '%'
+			</if>
+			<if test="subject != 0">
+				AND s_num like '%' || #{subject} || '%'
+			</if>
+		</where>
+	</select>
+   
+   <select id="selectLListUseLMsd" parameterType="integer" resultType="lectureCommand">
+	SELECT
+		*
+	FROM
+		le_num m LEFT JOIN lecture l
+	ON 
+    	m.l_num=l.l_num 
+	WHERE
+		m.m_id = #{m_id} ORDER BY sDate DESC
+   </select>
+   
+   <!-- 조인 연산 후 -->
+   
+	<select id="lecture_JoinLeNum_UseLMNum_Calc" parameterType="string" resultType="lectureCommand">
+		SELECT
+			l.*,
+			ln.l_m_num, 
+			ln.sdate, 
+			ln.edate,
+			(
+                SELECT 
+                    count(*) 
+                FROM 
+                    l_content 
+                WHERE 
+                    l_num=l.l_num
+            ) lconCount,
+			(
+                SELECT 
+                    count(*) 
+                FROM 
+                    lc_mem 
+                WHERE 
+                    l_m_num=ln.l_m_num AND comdate IS NOT NULL
+            ) lconComdateCount
+		FROM
+			lecture l
+			LEFT JOIN
+				le_num ln
+			ON
+				l.l_num = ln.l_num
+		WHERE
+			ln.m_id=#{m_id}
+		ORDER BY
+			sdate DESC
+   </select>
+   
+   <!-- 댓글 목록 -->
+   <!-- <select id="listReply" parameterType="map" resultType="lectureReplyCommand">
+      SELECT
+         re_num,
+         re_content,
+         re_date,
+         num,
+         id
+      FROM (SELECT
+              a.*,
+              rownum rnum
+            FROM (SELECT
+                    *
+                  FROM lecture_reply
+                  WHERE num = #{num}
+                  ORDER BY re_num DESC)a)
+      <![CDATA[
+      WHERE rnum >= #{start} AND rnum <= #{end}
+      ]]>
+   </select> -->   
+</mapper>
+
+
+
+
+
+

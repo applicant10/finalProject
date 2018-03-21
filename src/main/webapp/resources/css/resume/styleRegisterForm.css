@@ -1,0 +1,61 @@
+input[type="text"],
+input[type="date"],
+input[type="number"],
+input[type="password"],
+select{
+	width:400px;
+	text-align:center;
+	border:none;
+	border:solid 1px #FFAF0A;   
+	border-radius:2px;
+}
+.postCode{
+	width:240px;           
+	text-align:center;
+	border:none;
+	border:solid 1px #FFAF0A;   
+	border-radius:2px;
+}
+input[type="email"]{
+	width:400px;
+	text-align:center;
+	border:none;
+	border:solid 1px #FFAF0A;   
+	border-radius:2px;
+}
+label{
+	font-family: 'Nanum Gothic', sans-serif;
+	text-align:left;
+	width: 230px;          
+}
+div#firstForm ul li,
+div#secondForm ul li,
+div.firstForm ul li,
+div.secondForm ul li{
+	text-align:center;
+	margin:10px;
+	list-style:none;
+}
+
+ul li input[type="submit"],
+ul li input[type="button"]{
+	width:140px;
+	height:30px;
+	border:1px solid #34495e;
+	border-radius:2px;
+	cursor:pointer;
+	box-sizing:border-box;
+	overflow:hidden;
+	margin:0 0 40px 50px;
+	margin:0 0 0 10px;
+}
+
+
+
+
+
+
+
+
+
+

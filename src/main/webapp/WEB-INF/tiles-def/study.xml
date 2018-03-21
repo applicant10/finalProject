@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+      
+<tiles-definitions>
+	<definition name="studyBoard" extends="main">
+		<put-attribute name="header" value="/WEB-INF/views/template/header.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/study/studyBoard.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>
+	</definition>
+	<definition name="studyWrite" extends="main">
+		<put-attribute name="header" value="/WEB-INF/views/template/header.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/study/studyWrite.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>
+	</definition>
+	<definition name="studyDetail" extends="main">
+		<put-attribute name="header" value="/WEB-INF/views/template/header.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/study/studyDetail.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>
+	</definition>
+	<definition name="studyUpdate" extends="main">
+		<put-attribute name="header" value="/WEB-INF/views/template/header.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/study/studyUpdate.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>
+	</definition>
+	<definition name="studyDelete" extends="main">
+		<put-attribute name="header" value="/WEB-INF/views/template/header.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/study/studyDelete.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>
+	</definition>
+	<definition name="myGroup" extends="main">
+		<put-attribute name="header" value="/WEB-INF/views/template/header.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/study/myGroup.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>
+	</definition>
+	<definition name="teamBoard" extends="main">
+		<put-attribute name="header" value="/WEB-INF/views/template/header.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/study/teamBoard.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>
+	</definition>
+	<definition name="teamBoardDetail" extends="main">
+		<put-attribute name="header" value="/WEB-INF/views/template/header.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/study/teamBoardDetail.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>
+	</definition>
+	<definition name="teamBoardWrite" extends="main">
+		<put-attribute name="header" value="/WEB-INF/views/template/header.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/study/teamBoardWrite.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>
+	</definition>
+	<definition name="teamBoardUpdate" extends="main">
+		<put-attribute name="header" value="/WEB-INF/views/template/header.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/study/teamBoardUpdate.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>
+	</definition>
+	<definition name="teamBoardDelete" extends="main">
+		<put-attribute name="header" value="/WEB-INF/views/template/header.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/study/teamBoardDelete.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>
+	</definition>
+	<definition name="memberList" extends="main">
+		<put-attribute name="header" value="/WEB-INF/views/template/header.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/study/memberList.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>
+	</definition>
+	<definition name="studyEstablish" extends="main">
+		<put-attribute name="header" value="/WEB-INF/views/template/header.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/study/studyEstablish.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>
+	</definition>
+	<definition name="teamAppli" extends="main">
+		<put-attribute name="header" value="/WEB-INF/views/template/header.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/study/teamAppli.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>
+	</definition>
+	<definition name="appliList" extends="main">
+		<put-attribute name="header" value="/WEB-INF/views/template/header.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/study/appliList.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/> 
+	</definition>
+	<definition name="appliDetail" extends="main">
+		<put-attribute name="header" value="/WEB-INF/views/template/header.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/study/appliDetail.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>
+	</definition>
+</tiles-definitions>

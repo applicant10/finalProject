@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+	<definition name="myResume" extends="main">
+   	  <put-attribute name="header" value="/WEB-INF/views/template/header.jsp"/>
+      <put-attribute name="body" value="/WEB-INF/views/resume/myResume.jsp"/>
+      <put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>
+   </definition>
+   <definition name="myResumeNotFound" extends="main">
+   	  <put-attribute name="header" value="/WEB-INF/views/template/header.jsp"/>
+      <put-attribute name="body" value="/WEB-INF/views/resume/myResumeNotFound.jsp"/>
+      <put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>
+   </definition>
+   <definition name="myResumeForm" extends="main">
+   	  <put-attribute name="header" value="/WEB-INF/views/template/header.jsp"/>
+      <put-attribute name="body" value="/WEB-INF/views/resume/myResumeForm.jsp"/>
+      <put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>
+   </definition>
+   <definition name="myResumeModify" extends="main">
+   	  <put-attribute name="header" value="/WEB-INF/views/template/header.jsp"/>
+      <put-attribute name="body" value="/WEB-INF/views/resume/myResumeModify.jsp"/>
+      <put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>
+   </definition>
+   <definition name="myResumeDeleteCheck" extends="main">
+   	  <put-attribute name="header" value="/WEB-INF/views/template/header.jsp"/>
+      <put-attribute name="body" value="/WEB-INF/views/resume/myResumeDelete.jsp"/>
+      <put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>
+   </definition>
+   <definition name="bubble" extends="main">
+   	  <put-attribute name="header" value="/WEB-INF/views/template/header.jsp"/>
+      <put-attribute name="body" value="/WEB-INF/views/resume/type/bubble.jsp"/>
+      <put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>
+   </definition>
+   <definition name="standard" extends="main">
+   	  <put-attribute name="header" value="/WEB-INF/views/template/header.jsp"/>
+      <put-attribute name="body" value="/WEB-INF/views/resume/type/standard.jsp"/>
+      <put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>
+   </definition>
+   <definition name="basic" extends="main">
+   	  <put-attribute name="header" value="/WEB-INF/views/template/header.jsp"/>
+      <put-attribute name="body" value="/WEB-INF/views/resume/type/basic.jsp"/>
+      <put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>
+   </definition>
+   <definition name="samplePage" extends="main">
+   	  <put-attribute name="header" value="/WEB-INF/views/template/header.jsp"/>
+      <put-attribute name="body" value="/WEB-INF/views/enterprise/samplePage.jsp"/>
+      <put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>
+   </definition>
+</tiles-definitions>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<!-- 네임스페이스는 MemberMapper.xml과 맵핑되는 인터페이스명을 package를 포함해서 명시함. 불일치시 오류 발생 -->
+<mapper namespace="kr.spring.enterprise.dao.EnterpriseUserMapper">
+	<insert id="enPriRegister" parameterType="enterpriseUserCommand">
+		INSERT INTO enterprise
+		VALUES(
+			#{enterprise_num},
+		    #{enterprise_name}, 
+		    #{enterprise_ceo}, 
+		  	#{m_id}, 
+		    #{enterprise_password}, 
+		    #{enterprise_password_confirm}, 
+		    #{enterprise_address},
+		    #{enterprise_address_detail}, 
+		    #{enterprise_phone_num},
+		    #{enterprise_pax_num},
+		    #{enterprise_type},
+		    #{enterprise_info}, 
+		    #{enterprise_email}, 
+		    #{enterprise_charge}, 
+		    #{enterprise_charge_phone}, 
+		    sysdate,
+		    #{enterprise_postCode},
+		    #{enterprise_pay},
+		    #{enterprise_pay_percent}
+		    )
+	</insert>
+	<update id="enterpriseInfoModify" parameterType="enterpriseUserCommand">
+		UPDATE enterprise
+			SET
+			enterprise_num=#{enterprise_num},
+		    enterprise_name=#{enterprise_name}, 
+		    enterprise_ceo=#{enterprise_ceo}, 
+		    enterprise_address=#{enterprise_address},
+		    enterprise_address_detail=#{enterprise_address_detail}, 
+		    enterprise_phone_num=#{enterprise_phone_num},
+		    enterprise_pax_num=#{enterprise_pax_num},
+		    enterprise_type=#{enterprise_type},
+		    enterprise_info=#{enterprise_info}, 
+		    enterprise_email=#{enterprise_email}, 
+		    enterprise_charge=#{enterprise_charge}, 
+		    enterprise_charge_phone=#{enterprise_charge_phone}, 
+		    enterprise_regdate=sysdate,
+		    enterprise_postCode=#{enterprise_postCode},
+		    enterprise_pay=#{enterprise_pay},
+		    enterprise_pay_percent=#{enterprise_pay_percent}
+		WHERE m_id=#{m_id}
+	</update>
+   
+</mapper>
+
+
+
+
+
+

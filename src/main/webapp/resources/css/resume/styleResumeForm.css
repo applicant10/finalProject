@@ -1,0 +1,103 @@
+<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic+Coding" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
+
+div#resumeNotFound{
+	margin:0 0 0 300px;
+	width:350px;
+	border:1px solid;
+	border-radius:3px;
+	text-align:center;
+}
+span.optionSpan{
+	color:gray;
+}
+div.align-right{
+	text-align:right;
+	overflow:auto;
+}          
+.slideButtonToggle{
+	width:35%;
+	margin:5px;
+}
+.submitButton,
+.homeButton{
+	width:140px;
+	height:30px;
+	border:1px solid #34495e;
+	float:left;
+	cursor:pointer;
+	position:relative;
+	box-sizing:border-box;
+	overflow:hidden;
+	margin:0 0 10px 0;
+}
+
+input.align-center{
+	text-align:center;
+}
+
+input#r_picture{
+	text-align:center;
+}
+input[type="text"],
+input[type="date"],
+input[type="number"],
+input[type="password"],
+select{
+	width:400px;
+	text-align:center;
+	border:none;
+	border:solid 1px #34C6BE;   
+	border-radius:2px;
+}
+input[type="file"]{
+content: 'Select some files';
+  display: inline-block;
+  padding: 5px 8px;
+  outline: none;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 17px;
+  border-radius:1px;
+  width:400px;
+}
+
+ul.resumeForm li{
+	text-align:center;
+	margin:0 0 0 0;
+}
+ul.resumeForm li table tr{               
+	text-align:center;
+	margin:0 0 0 0;
+}
+td{
+	text-align:center;
+}
+ul.resumeForm li div#submitButton{
+	margin:0 0 0 40%;
+}
+ul.resumeForm li input[type="submit"]{
+	text-align:center;
+}
+ul.resumeForm li input[type="button"]{
+	text-align:center;
+	margin:0 0 0 10px;
+}
+
+label{
+	font-family: 'Nanum Gothic', sans-serif;
+	text-align:left;
+	width: 300px;
+}
+
+@media(max-width:770px){
+	table tr td.introduce{
+	width:100%
+	}
+	textarea#r_intro{
+	width:80%;
+	}
+}
+
+
+

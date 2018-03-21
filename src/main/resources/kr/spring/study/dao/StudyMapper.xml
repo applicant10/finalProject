@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<!-- 네임스페이스는 MemberMapper.xml과 맵핑되는 인터페이스명을 package를 포함해서 명시함. 불일치시 오류 발생 -->
+<mapper namespace="kr.spring.study.dao.StudyMapper">
+	<select id="list" parameterType="map" resultType="studyCommand">
+		SELECT
+			*
+		FROM (SELECT
+				a.*,
+				rownum rnum
+			  FROM (SELECT
+			           *
+		             FROM studyboard sb INNER JOIN teaminfo ti 
+		             ON
+					sb.g_num = ti.g_num
+					WHERE g_type is not null
+				      <where>
+				      	<if test="keyword != '' and keyfield == 't_title'">
+				      		t_title like '%' || #{keyword} || '%' 
+				      	</if>
+				      	<if test="keyword != '' and keyfield == 'm_nick'">
+				      		m_nick like '%' || #{keyword} || '%' 
+				      	</if>
+				      	<if test="keyword != '' and keyfield == 't_content'">
+				      		t_content like '%' || #{keyword} || '%' 
+				      	</if>
+				      	<if test="keyword != '' and keyfield == 'g_type'">
+				      		g_type like '%' || #{keyword} || '%' 
+				      	</if>
+				      </where>
+		           ORDER BY t_date DESC)a)
+		<![CDATA[
+		WHERE rnum >= #{start} AND rnum <= #{end}
+		]]>
+	</select>
+	
+	<select id="getRowCount" parameterType="map" resultType="integer">
+		SELECT
+		  count(*)
+		FROM (SELECT
+			           *
+		             FROM studyboard sb INNER JOIN teaminfo ti 
+		             ON
+					sb.g_num = ti.g_num)
+					
+		<where>
+	      	<if test="keyword != '' and keyfield == 't_title'">
+	      		t_title like '%' || #{keyword} || '%' 
+	      	</if>
+	      	<if test="keyword != '' and keyfield == 'm_nick'">
+	      		m_nick like '%' || #{keyword} || '%' 
+	      	</if>
+	      	<if test="keyword != '' and keyfield == 't_content'">
+	      		t_content like '%' || #{keyword} || '%' 
+	      	</if>
+	      	<if test="keyword != '' and keyfield == 'g_type'">
+		      	g_type like '%' || #{keyword} || '%' 
+		    </if>
+         </where>
+         WHERE g_type is not null
+	</select>
+	
+	<!-- 댓글 목록 -->
+	<select id="studyReply" parameterType="map" resultType="studyReplyCommand">
+		SELECT
+			*
+		FROM (SELECT
+				a.*,
+				rownum rnum
+			  FROM (SELECT
+			  		  *
+			  		FROM studyReply
+			  		WHERE t_num = #{t_num}
+			  		ORDER BY re_tdate DESC)a)
+		<![CDATA[
+		WHERE rnum >= #{start} AND rnum <= #{end}
+		]]>
+	</select>
+</mapper>
+
+
+
+
+
+
+

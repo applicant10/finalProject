@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+	<definition name="registerEnterpriseForm" extends="main">
+   	  <put-attribute name="header" value="/WEB-INF/views/template/header.jsp"/>
+      <put-attribute name="body" value="/WEB-INF/views/enterprise/enterpriseRegisterForm.jsp"/>
+      <put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>
+   </definition>
+   <definition name="resumeList" extends="main">
+   	  <put-attribute name="header" value="/WEB-INF/views/template/header.jsp"/>
+      <put-attribute name="body" value="/WEB-INF/views/enterprise/resumeList.jsp"/>
+      <put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>
+   </definition>
+   <definition name="resumeDetail" extends="main">
+   	  <put-attribute name="header" value="/WEB-INF/views/template/header.jsp"/>
+      <put-attribute name="body" value="/WEB-INF/views/enterprise/resumeDetail.jsp"/>
+      <put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>
+   </definition>
+   <definition name="myEnterPageMain" extends="main">
+   	  <put-attribute name="header" value="/WEB-INF/views/template/header.jsp"/>
+      <put-attribute name="body" value="/WEB-INF/views/enterprise/enterPageMain.jsp"/>
+      <put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>
+   </definition>
+   <definition name="enterInfo" extends="main">
+   	  <put-attribute name="header" value="/WEB-INF/views/template/header.jsp"/>
+      <put-attribute name="body" value="/WEB-INF/views/enterprise/enterpriseInfo.jsp"/>
+      <put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>
+   </definition>
+   <definition name="enterResume" extends="main">
+   	  <put-attribute name="header" value="/WEB-INF/views/template/header.jsp"/>
+      <put-attribute name="body" value="/WEB-INF/views/enterprise/enterResumeList.jsp"/>
+      <put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>
+   </definition>
+   <definition name="enterModifyInfo" extends="main">
+   	  <put-attribute name="header" value="/WEB-INF/views/template/header.jsp"/>
+      <put-attribute name="body" value="/WEB-INF/views/enterprise/enterpriseModify.jsp"/>
+      <put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>
+   </definition>
+   <definition name="whoLikesMine" extends="main">
+   	  <put-attribute name="header" value="/WEB-INF/views/template/header.jsp"/>
+      <put-attribute name="body" value="/WEB-INF/views/enterprise/whoLikesMyResume.jsp"/>
+      <put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>
+   </definition>
+   <definition name="enterDetailInfo" extends="main">
+   	  <put-attribute name="header" value="/WEB-INF/views/template/header.jsp"/>
+      <put-attribute name="body" value="/WEB-INF/views/enterprise/enterDetail.jsp"/>
+      <put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>
+   </definition>
+   <definition name="false" extends="main">
+      <put-attribute name="body" value="/WEB-INF/views/enterprise/false.jsp"/>
+   </definition>
+
+</tiles-definitions>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+	<definition name="makeLectureIntro" extends="main">
+		<put-attribute name="header" value="/WEB-INF/views/template/header.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/lecture/makeLectureIntro.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>
+	</definition>
+	<definition name="insertLectureForm" extends="main">
+		<put-attribute name="header" value="/WEB-INF/views/template/header.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/lecture/insertLectureForm.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>
+	</definition>
+	<definition name="lectureUpdateForm" extends="main">
+		<put-attribute name="header" value="/WEB-INF/views/template/header.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/lecture/lectureUpdateForm.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>
+	</definition>
+	<definition name="lectureListView" extends="main">
+		<put-attribute name="header" value="/WEB-INF/views/template/header.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/lecture/lectureListView.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>
+	</definition>
+	<definition name="lectureView" extends="main">
+		<put-attribute name="header" value="/WEB-INF/views/template/header.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/lecture/lectureView.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>
+	</definition>
+	<definition name="myLectureList" extends="main">
+		<put-attribute name="header" value="/WEB-INF/views/template/header.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/lecture/myLectureList.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>
+	</definition>
+	<definition name="insertLcontentForm" extends="main">
+		<put-attribute name="header" value="/WEB-INF/views/template/header.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/lecture/insertLcontentForm.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>
+	</definition>
+	<definition name="lcontentUpdateForm" extends="main">
+		<put-attribute name="header" value="/WEB-INF/views/template/header.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/lecture/lcontentUpdateForm.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>
+	</definition>
+	<definition name="learnInfo" extends="main">
+		<put-attribute name="header" value="/WEB-INF/views/template/header.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/lecture/learnInfo.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>
+	</definition>
+	<definition name="learnStudent" extends="main">
+		<put-attribute name="header" value="/WEB-INF/views/template/header.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/lecture/learnStudent.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>
+	</definition>
+	<definition name="myLearnState" extends="main">
+		<put-attribute name="header" value="/WEB-INF/views/template/header.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/lecture/myLearnState.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>
+	</definition>
+</tiles-definitions>
