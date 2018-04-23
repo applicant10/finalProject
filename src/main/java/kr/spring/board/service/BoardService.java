@@ -7,7 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import kr.spring.board.domain.BoardCommand;
 import kr.spring.board.domain.BoardReplyCommand;
-
+@Transactional
 public interface BoardService {
 	//ºÎ¸ð±Û
 	@Transactional(readOnly=true)
